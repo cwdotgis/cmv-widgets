@@ -1,0 +1,22 @@
+.cmvQueryStatistics {
+    width: 100%;
+	padding: 5px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+/*	background-color: black;
+	color: cornsilk;*/
+}
+.cmvQueryStatistics label {
+	font-weight: bold;
+	margin-left: 3px;
+}
+.cmvQueryStatistics table.attrTable td.attrName {
+    text-align: right;
+    font-weight: bold;
+    width: 50%;
+    padding-right: 5px;
+}
+.cmvQueryStatistics .stats {
+/*    color: darkorange;*/
+}

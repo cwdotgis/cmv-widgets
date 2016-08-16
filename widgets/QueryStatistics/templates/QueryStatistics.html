@@ -1,0 +1,53 @@
+<div class="cmvQueryStatistics" >   
+    <div id="results" >
+        <p ><label >Summary Statistics</label></p>
+        Click on the map to view summary statistics of the 
+    population density for U.S. Census block groups within 
+    one mile of the clicked point.<br ><br >
+
+        <div id="display" >
+            <table class="attrTable">
+                <tr valign="top">
+                    <td class="attrName">
+                        <label>${i18n.labels.numBlocks}:</label>
+                    </td>
+                    <td>
+                        <span class="stats" id="countResult" data-dojo-attach-point="countResult" ></span>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td class="attrName">
+                        <label>${i18n.labels.minDensity}:</label>
+                    </td>
+                    <td>
+                        <span class="stats" id="minResult" data-dojo-attach-point="minResult" ></span>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td class="attrName">
+                        <label>${i18n.labels.maxDensity}:</label>
+                    </td>
+                    <td>
+                        <span class="stats" id="maxResult" data-dojo-attach-point="maxResult" ></span>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td class="attrName">
+                        <label>${i18n.labels.avgDensity}:</label>
+                    </td>
+                    <td>
+                        <span class="stats" id="avgResult" data-dojo-attach-point="avgResult" ></span>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td class="attrName">
+                        <label>${i18n.labels.sdDensity}:</label>
+                    </td>
+                    <td>
+                        <span class="stats" id="stdDevResult" data-dojo-attach-point="stdDevResult" ></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
