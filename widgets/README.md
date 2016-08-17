@@ -1,9 +1,10 @@
 #Query Statistics with SQL Expression Widget
 First try at creating my own widget for the [cmv-app](https://github.com/cmv/cmv-app).
-This is a widget to query for summary statistics from a hosted feature service with an SQL expression. Adapted from [Query Statistics with SQL Expression](https://developers.arcgis.com/javascript/3/jssamples/query_statistics_sql.html) sample code from [ArcGIS Javascript API 3.17](https://developers.arcgis.com/javascript/3/) sample code.
 
-Add the following code to the viewer.js file
+This is a widget to query for summary statistics from a feature service with an SQL expression. Adapted from [ArcGIS Javascript API 3.17](https://developers.arcgis.com/javascript/3/) sample code [Query Statistics with SQL Expression](https://developers.arcgis.com/javascript/3/jssamples/query_statistics_sql.html).
+
 ##Widget Configuration
+Add the following code to the viewer.js file
 ``` javascript
 queryStatistics: {
     include: true,
