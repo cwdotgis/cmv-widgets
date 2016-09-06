@@ -1,15 +1,17 @@
 // http://dojotoolkit.org/reference-guide/1.10/dojo/i18n.html
 define({
     root: {
-    	labels: {
-			numBlocks: 'Block Groups',
-			minDensity: 'Min Density',
-			maxDensity: 'Max Density',
-			avgDensity: 'Average Density',
-			sdDensity: 'Standard Deviation',
+        labels: {
+            selectLayer: 'Select Layer:',
+            countLabel: 'Feature Count',
+            minLabel: 'Minimum',
+            maxLabel: 'Maximum',
+            avgLabel: 'Average',
+            stdDevLabel: 'Standard Deviation',
+        },
+        buttons: {
+            add: 'Add',
+            remove: 'Remove'
         }
-//		,
-//        Buttons: {
-//        }
-	}
+    }
 });
