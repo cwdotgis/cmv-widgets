@@ -29,8 +29,8 @@ queryStatistics: {
 ```
 
 ##To Dos and Goals for this widget:
--[x] Adapt code from API sample
--[x] Change the query geometry from point buffer to current map extent
--[ ] Allow user to have a choice between point buffer and current map extent?
--[ ] Add function to allow user to select layer for statistics
--[ ] Clean up code to make this a configurable widget
+- [x] Adapt code from API sample
+- [x] Change the query geometry from point buffer to current map extent
+- [ ] Allow user to have a choice between point buffer and current map extent?
+- [ ] Add function to allow user to select layer for statistics
+- [ ] Clean up code to make this a configurable widget
