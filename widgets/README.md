@@ -13,18 +13,8 @@ queryStatistics: {
     path: 'widgets/QueryStatistics',
     title: 'Summary Statistics',
     open: true,
-	//canFloat: true,
     position: 0,
-    //options: 'config/querystatistics'
-	options: {
-        map: true,
-        url: 'https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Puget_Sound_BG_Food/FeatureServer/0',
-        fields: ['OBJECTID', 'ALAND', 'TOTPOP_CY', 'HasData', 'TOTHH'],
-        sqlExpression: 'TOTPOP_CY/(ALAND*0.0000003861)', //to calculate population density
-        qryBuffDistance: 1, //distance from clicked point
-        qryBuffUnits: 'miles', //units of buffer
-        unitsText: 'ppl/sq. mi.' //population density units for results
-	}
+    options: 'config/statisticsConfig'
 },
 ```
 
