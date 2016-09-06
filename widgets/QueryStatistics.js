@@ -142,11 +142,8 @@ define([
             //     outFields: this.fields
             // });
             
-            var layer = this.layers[this.attributeLayer];
-
-            var statField = layer.field;
-
-            var blockGroupsLyr = this.layers[this.attributeLayer];
+            var blockGroupsLyr = this.setFeatureLayer();
+            var statField = blockGroupsLyr.field;
 
             var minStatDef = new StatisticDefinition();
             minStatDef.statisticType = 'min';
