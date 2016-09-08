@@ -122,7 +122,7 @@ define([
             this.clearLayers();
             var layer = this.setFeatureLayer();
             map.addLayer(layer);
-            this.onExtentChange();
+            this.getStats();
             
         },
 
@@ -142,32 +142,32 @@ define([
             //     outFields: this.fields
             // });
             
-            var blockGroupsLyr = this.setFeatureLayer();
-            var statField = blockGroupsLyr.field;
+            var layer = this.setFeatureLayer();
+            var statField = this.layers[this.attributeLayer].field;
 
             var minStatDef = new StatisticDefinition();
             minStatDef.statisticType = 'min';
-            minStatDef.onStatisticField = this.statField;
+            minStatDef.onStatisticField = statField;
             minStatDef.outStatisticFieldName = 'minStat';
 
             var maxStatDef = new StatisticDefinition();
             maxStatDef.statisticType = 'max';
-            maxStatDef.onStatisticField = this.statField;
+            maxStatDef.onStatisticField = statField;
             maxStatDef.outStatisticFieldName = 'maxStat';
 
             var avgStatDef = new StatisticDefinition();
             avgStatDef.statisticType = 'avg';
-            avgStatDef.onStatisticField = this.statField;
+            avgStatDef.onStatisticField = statField;
             avgStatDef.outStatisticFieldName = 'avgStat';
 
             var countStatDef = new StatisticDefinition();
             countStatDef.statisticType = 'count';
-            countStatDef.onStatisticField = this.statField;
+            countStatDef.onStatisticField = statField;
             countStatDef.outStatisticFieldName = 'countStat';
 
             var stdDevStatDef = new StatisticDefinition();
             stdDevStatDef.statisticType = 'stddev';
-            stdDevStatDef.onStatisticField = this.statField;
+            stdDevStatDef.onStatisticField = statField;
             stdDevStatDef.outStatisticFieldName = 'stdDevStat';
 
             var queryParams = new Query();
@@ -177,7 +177,7 @@ define([
             var geometry = map.extent;
             queryParams.geometry = geometry;
 
-            blockGroupsLyr.queryFeatures(queryParams, lang.hitch(this, function(results) {
+            layer.queryFeatures(queryParams, lang.hitch(this, function(results) {
 
                 var stats = results.features[0].attributes;
 
