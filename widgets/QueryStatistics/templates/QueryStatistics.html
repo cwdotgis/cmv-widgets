@@ -1,35 +1,32 @@
 <div class="cmvQueryStatistics" >
-
-            <div class="selectALayer">
-                <label>
-                    <b>${i18n.labels.selectLayer}</b>
-                </label>
-                <br>
-                    <select data-dojo-attach-event="onChange:onAttributeLayerChange" data-dojo-attach-point="selectLayerByAttribute" data-dojo-type="dijit/form/Select" style="width:100%;">
-                    </select>
-                </br>
-            </div>
+    <div class="selectALayer">
+        <label>
+            <b>${i18n.labels.selectLayer}</b>
+        </label>
+        <br>
+        <select data-dojo-attach-event="onChange:onAttributeLayerChange" data-dojo-attach-point="selectLayerByAttribute" data-dojo-type="dijit/form/Select" style="width:100%;">
+        </select>
+        </br>
+    </div>
 
     <div class="addLayerWidget" align="center" data-dojo-attach-point="addLayerActionsContainer">
         <button data-dojo-attach-point="addButton"
-                data-dojo-props="iconClass:'addLayerIcon',showLabel:true"
-                data-dojo-type="dijit/form/Button">${i18n.buttons.add}
+            data-dojo-props="iconClass:'addLayerIcon',showLabel:true"
+            data-dojo-type="dijit/form/Button">${i18n.buttons.add}
         </button>
-
         <button data-dojo-type="dijit/form/Button"
-                data-dojo-props="iconClass:'clearLayerIcon',showLabel:true"
-                data-dojo-attach-event="onClick:clearLayers">${i18n.buttons.remove}
+            data-dojo-props="iconClass:'clearLayerIcon',showLabel:true"
+            data-dojo-attach-event="onClick:clearLayers">${i18n.buttons.remove}
         </button>
     </div>
 
     <div id="results" >
-        Summary statistics for the selected metal within the current map are shown below.<br >
-
+        Summary statistics for the selected metal are shown below. Statistics are calculated for features within the current map view.<br >
         <div id="display" >
             <table class="attrTable">
                 <tr valign="top">
                     <td class="attrName">
-                        <label>${i18n.labels.countLabel}:</label>
+                        <label><span id="layerAddName" data-dojo-attach-point="layerAdd"></span> ${i18n.labels.countLabel}:</label>
                     </td>
                     <td>
                         <span class="stats" id="countResult" data-dojo-attach-point="countResult" ></span>
