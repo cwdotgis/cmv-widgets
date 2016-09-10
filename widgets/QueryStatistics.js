@@ -48,15 +48,15 @@ define([
         layers: null,
         url: null,
         fields: null,
-        blockGroupsLyr: null,
         unitsText: null,
+        layerAdded: false,
 
         postCreate: function() {
             this.inherited(arguments);
             map = this.map;
+            noStatsMsg = 'No Layer on Map'; //move this to config file or keep here?
             this.setupConnections();
             this.initLayerSelect();
-            //map.on('extent-change', lang.hitch(this, 'getStats'));
         },
 
         initLayerSelect: function () {
@@ -99,12 +99,10 @@ define([
                 }
             }
         },
-        onExtentChange: function() {
-            map.on('extent-change', lang.hitch(this, 'getStats'));
-        },
 
         setupConnections: function () {
             this.addButton.on('click', lang.hitch(this, 'addLayer'));
+            mapExtentChange = map.on('extent-change', lang.hitch(this, 'getStats'));
         },
 
         setFeatureLayer: function() {
@@ -119,11 +117,13 @@ define([
         },
 
         addLayer: function () {
-            this.clearLayers();
+            //this.clearLayers();
             var layer = this.setFeatureLayer();
             map.addLayer(layer);
+            this.layerAdded = true;
             this.getStats();
-            
+            dom.byId('layerAddName').innerHTML = layer.id;
+            console.log('layer added: ' + layer.id);
         },
 
         clearLayers: function () {
@@ -133,15 +133,17 @@ define([
             array.forEach(layerIds, function (layerId) {
                 this.map.removeLayer(this.map.getLayer(layerId));
             });
+            this.layerAdded = false;
+            dom.byId('layerAddName').innerHTML = '';
+            this.noStats(noStatsMsg);
         },
 
         getStats: function() {
 
-            // var blockGroupsLyr = new FeatureLayer(this.url, {
-            //     mode: FeatureLayer.MODE_ONDEMAND,
-            //     outFields: this.fields
-            // });
-            
+            if (this.layerAdded === false) {
+                this.noStats(noStatsMsg);
+                return;
+            } else if (this.layerAdded === true) {
             var layer = this.setFeatureLayer();
             var statField = this.layers[this.attributeLayer].field;
 
@@ -176,7 +178,7 @@ define([
             queryParams.outStatistics = [minStatDef, maxStatDef, avgStatDef, countStatDef, stdDevStatDef];
             var geometry = map.extent;
             queryParams.geometry = geometry;
-
+            
             layer.queryFeatures(queryParams, lang.hitch(this, function(results) {
 
                 var stats = results.features[0].attributes;
@@ -198,9 +200,18 @@ define([
                 }) + ' ' + this.unitsText;
                 
             }));
-
+            console.log('stats on layer: ' + layer.id);
+            }
         },
-
+        
+        noStats: function(noStatsMsg) {
+            dom.byId('countResult').innerHTML = noStatsMsg;
+            dom.byId('minResult').innerHTML = noStatsMsg;
+            dom.byId('maxResult').innerHTML = noStatsMsg;
+            dom.byId('avgResult').innerHTML = noStatsMsg;
+            dom.byId('stdDevResult').innerHTML = noStatsMsg;     
+        }
+// code from sample. Not sure where this goes...
 //        errback: function(err) {
 //            console.log('Could not retrieve summary statistics.', err);
 //
