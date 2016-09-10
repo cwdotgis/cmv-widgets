@@ -3,7 +3,7 @@ define({
     root: {
         labels: {
             selectLayer: 'Select Layer:',
-            countLabel: 'Feature Count',
+            countLabel: 'Count',
             minLabel: 'Minimum',
             maxLabel: 'Maximum',
             avgLabel: 'Average',
@@ -12,6 +12,6 @@ define({
         buttons: {
             add: 'Add',
             remove: 'Remove'
-        }
+       }
     }
 });
