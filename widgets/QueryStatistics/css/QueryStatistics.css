@@ -4,8 +4,6 @@
 	padding-bottom: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
-/*	background-color: black;
-	color: cornsilk;*/
 }
 .cmvQueryStatistics label {
 	font-weight: bold;
@@ -18,5 +16,19 @@
     padding-right: 5px;
 }
 .cmvQueryStatistics .stats {
-/*    color: darkorange;*/
+    color: darkorange;
+}
+.cmvQueryStatistics .addLayerWidget {
+    margin: 5px;
+    padding: 5px;
+}
+.clearLayerIcon {
+    background-image: url(../images/clear.png);
+    width: 16px;
+    height: 16px;
+}
+.addLayerIcon {
+    background-image: url(../images/add.png);
+    width: 16px;
+    height: 16px;
 }

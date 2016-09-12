@@ -1,12 +1,32 @@
-<div class="cmvQueryStatistics" >   
+<div class="cmvQueryStatistics" >
+    <div class="selectALayer">
+        <label>
+            <b>${i18n.labels.selectLayer}</b>
+        </label>
+        <br>
+        <select data-dojo-attach-event="onChange:onAttributeLayerChange" data-dojo-attach-point="selectLayerByAttribute" data-dojo-type="dijit/form/Select" style="width:100%;">
+        </select>
+        </br>
+    </div>
+
+    <div class="addLayerWidget" align="center" data-dojo-attach-point="addLayerActionsContainer">
+        <button data-dojo-attach-point="addButton"
+            data-dojo-props="iconClass:'addLayerIcon',showLabel:true"
+            data-dojo-type="dijit/form/Button">${i18n.buttons.add}
+        </button>
+        <button data-dojo-type="dijit/form/Button"
+            data-dojo-props="iconClass:'clearLayerIcon',showLabel:true"
+            data-dojo-attach-event="onClick:clearLayers">${i18n.buttons.remove}
+        </button>
+    </div>
+
     <div id="results" >
-        <p ><label >Summary Statistics</label></p>
-        As you pan/zoom around the map, the summary statistics below will update to show results for the features within the current map view extent.<br ><br >
+        Summary statistics for the selected metal are shown below. Statistics are calculated for features within the current map view.<br >
         <div id="display" >
             <table class="attrTable">
                 <tr valign="top">
                     <td class="attrName">
-                        <label>${i18n.labels.numBlocks}:</label>
+                        <label><span id="layerAddName" data-dojo-attach-point="layerAdd"></span> ${i18n.labels.countLabel}:</label>
                     </td>
                     <td>
                         <span class="stats" id="countResult" data-dojo-attach-point="countResult" ></span>
@@ -14,7 +34,7 @@
                 </tr>
                 <tr valign="top">
                     <td class="attrName">
-                        <label>${i18n.labels.minDensity}:</label>
+                        <label>${i18n.labels.minLabel}:</label>
                     </td>
                     <td>
                         <span class="stats" id="minResult" data-dojo-attach-point="minResult" ></span>
@@ -22,7 +42,7 @@
                 </tr>
                 <tr valign="top">
                     <td class="attrName">
-                        <label>${i18n.labels.maxDensity}:</label>
+                        <label>${i18n.labels.maxLabel}:</label>
                     </td>
                     <td>
                         <span class="stats" id="maxResult" data-dojo-attach-point="maxResult" ></span>
@@ -30,7 +50,7 @@
                 </tr>
                 <tr valign="top">
                     <td class="attrName">
-                        <label>${i18n.labels.avgDensity}:</label>
+                        <label>${i18n.labels.avgLabel}:</label>
                     </td>
                     <td>
                         <span class="stats" id="avgResult" data-dojo-attach-point="avgResult" ></span>
@@ -38,7 +58,7 @@
                 </tr>
                 <tr valign="top">
                     <td class="attrName">
-                        <label>${i18n.labels.sdDensity}:</label>
+                        <label>${i18n.labels.stdDevLabel}:</label>
                     </td>
                     <td>
                         <span class="stats" id="stdDevResult" data-dojo-attach-point="stdDevResult" ></span>

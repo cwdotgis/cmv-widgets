@@ -1,10 +1,12 @@
-#Query Statistics with SQL Expression Widget
-First try at creating my own widget for the [cmv-app](https://github.com/cmv/cmv-app).
+##Query Statistics with SQL Expression Widget
 
-This is a widget to query for summary statistics from a feature service with an SQL expression. Adapted from [ArcGIS Javascript API 3.17](https://developers.arcgis.com/javascript/3/) sample code [Query Statistics with SQL Expression](https://developers.arcgis.com/javascript/3/jssamples/query_statistics_sql.html).
+This widget queries summary statistics for features within the current map view. This code was mostly adapted from [ArcGIS Javascript API 3.17](https://developers.arcgis.com/javascript/3/) sample code [Query Statistics with SQL Expression](https://developers.arcgis.com/javascript/3/jssamples/query_statistics_sql.html).
 
-##Widget Configuration
+![Statistics Widget Screenshot](querystat_widget.jpg?raw=true "Statistics Widget")
+
+###Widget Configuration
 Add the following code to the viewer.js file
+
 ``` javascript
 queryStatistics: {
     include: true,
@@ -13,24 +15,13 @@ queryStatistics: {
     path: 'widgets/QueryStatistics',
     title: 'Summary Statistics',
     open: true,
-	//canFloat: true,
     position: 0,
-    //options: 'config/querystatistics'
-	options: {
-        map: true,
-        url: 'https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Puget_Sound_BG_Food/FeatureServer/0',
-        fields: ['OBJECTID', 'ALAND', 'TOTPOP_CY', 'HasData', 'TOTHH'],
-        sqlExpression: 'TOTPOP_CY/(ALAND*0.0000003861)', //to calculate population density
-        qryBuffDistance: 1, //distance from clicked point
-        qryBuffUnits: 'miles', //units of buffer
-        unitsText: 'ppl/sq. mi.' //population density units for results
-	}
+    options: 'config/statisticsConfig'
 },
 ```
 
-##To Dos and Goals for this widget:
+###To Dos and Goals for this widget:
 - [x] Adapt code from API sample
 - [x] Change the query geometry from point buffer to current map extent
+- [x] Add function to allow user to select layer for statistics
 - [ ] Allow user to have a choice between point buffer and current map extent?
-- [ ] Add function to allow user to select layer for statistics
-- [ ] Clean up code to make this a configurable widget
