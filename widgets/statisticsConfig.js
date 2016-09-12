@@ -37,7 +37,7 @@ define({
         id: 'Pb',
         field: 'pb_icp40'
     }, {
-        name: 'Thallium (Th) by ICP',
+        name: 'Thorium (Th) by ICP',
         id: 'Th',
         field: 'th_icp40'
     }, {
