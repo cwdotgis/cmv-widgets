@@ -117,7 +117,8 @@ define([
         },
 
         addLayer: function () {
-            //this.clearLayers();
+            //clears previously added layer
+            this.removeLayers();
             var layer = this.setFeatureLayer();
             map.addLayer(layer);
             this.layerAdded = true;
@@ -126,13 +127,18 @@ define([
             console.log('layer added: ' + layer.id);
         },
 
-        clearLayers: function () {
+        removeLayers: function() {
             this.map.graphics.clear();
             var layerIds = this.map.graphicsLayerIds.slice(0);
             layerIds = layerIds.concat(this.map.layerIds.slice(1));
             array.forEach(layerIds, function (layerId) {
                 this.map.removeLayer(this.map.getLayer(layerId));
-            });
+            });  
+        },
+        
+        clearLayersResults: function () {
+            //for remove button to clear layers from map and query results
+            this.removeLayers();
             this.layerAdded = false;
             dom.byId('layerAddName').innerHTML = '';
             this.noStats(noStatsMsg);
