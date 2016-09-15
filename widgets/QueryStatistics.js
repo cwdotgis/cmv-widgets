@@ -124,20 +124,52 @@ define([
             this.layerAdded = true;
             this.getStats();
             dom.byId('layerAddName').innerHTML = layer.id;
-            console.log('layer added: ' + layer.id);
+            //console.log('layer added: ' + layer.id);
         },
 
         removeLayers: function() {
-            this.map.graphics.clear();
-            var layerIds = this.map.graphicsLayerIds.slice(0);
-            layerIds = layerIds.concat(this.map.layerIds.slice(1));
-            array.forEach(layerIds, function (layerId) {
-                this.map.removeLayer(this.map.getLayer(layerId));
-            });  
+            map.graphics.clear();
+            //set up array for layer ids in config file
+            var configIds = [];
+            var configLen = this.layers.length, option;
+            for (var i = 0; i < configLen; i++) {
+                var layerId = this.layers[i].id;
+                configIds.push(layerId);
+            }
+            
+            //set up array for layers on map
+            var layersIdsArr = [];
+            var count = map.graphicsLayerIds.length; //use map.layerIds.length for dynamic
+            for (var j = 0; j < count; j++) {
+                var currentLayer = map.getLayer(map.graphicsLayerIds[j]);
+                layersIdsArr.push(currentLayer.id);
+            }
+            
+            //only remove layers that match both arrays
+            var layersToRemove = this.getMatchingIds(configIds, layersIdsArr);
+            var lyrCount = layersToRemove.length;
+            for (var e = 0; e < lyrCount; e++) {
+                map.removeLayer(map.getLayer(layersToRemove[e]));
+            }
+            
+//            console.log('config file layer ids: ' + configIds);
+//            console.log('layers on map ids: ' + layersIdsArr);
+//            console.log('layers removed: ' + this.getMatchingIds(configIds, layersIdsArr)); 
+        },
+        
+        getMatchingIds: function (a, b) {
+            var matches = [];      
+            for ( var i = 0; i < a.length; i++ ) {
+                for ( var e = 0; e < b.length; e++ ) {
+                    if ( a[i] === b[e] ) matches.push( a[i] );
+                }
+            }
+            return matches;
         },
         
         clearLayersResults: function () {
             //for remove button to clear layers from map and query results
+            this.map.graphics.clear();
             this.removeLayers();
             this.layerAdded = false;
             dom.byId('layerAddName').innerHTML = '';
@@ -145,7 +177,6 @@ define([
         },
 
         getStats: function() {
-
             if (this.layerAdded === false) {
                 this.noStats(noStatsMsg);
                 return;
@@ -206,7 +237,7 @@ define([
                 }) + ' ' + this.unitsText;
                 
             }));
-            console.log('stats on layer: ' + layer.id);
+            //console.log('stats on layer: ' + layer.id);
             }
         },
         
